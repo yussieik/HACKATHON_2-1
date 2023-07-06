@@ -3,10 +3,14 @@
 {% block content %}
 
 <h1>Track Your Travel History</h1>
-<div class="d-flex justify-content-between">
-    {% for country in countries %}
-    {{ country }}
-    {% endfor %}
+<div>
+    
+    <ol>
+        {% for country in countries %}
+        <li>{{ country }}</li>
+        {% endfor %}
+    </ol>
+    
 </div>
 
 {% endblock content %}
