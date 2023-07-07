@@ -3,15 +3,13 @@
 {% block content %}
 
 <h1>Track Your Travel History</h1>
+<h3>Countries List</h3><br>
 <div class="d-flex justify-content-start">
-    <h3>Countries List</h3>
-
-  
-
-    <ul>
+    
+    <ul style="width: 500px; height: 500px; overflow: scroll; margin-left: 50px; border: 1px solid lightblue;">
         {% for country in countries %}
         <input type="checkbox" id="country_{{ country.id }}" name="country" value="{{ country.id }}" style="border-radius: 50%;">
-        <label for="country_{{ country.id }}">{{ country.name }} <img src="{{ country.flag }}" alt="flag" style="width: 20px;"></label><br>
+        <label for="country_{{ country.id }}"><img src="{{ country.flag }}" alt="flag" style="width: 20px;"> {{ country.name }}</label><br>
         {% endfor %}
     </ul>
 
