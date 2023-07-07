@@ -7,8 +7,8 @@
     
     <ul id="countries">
         {% for country in countries %}
-        <input type="checkbox" id="country_{{ country.id }}" name="country" value="{{ country.id }}" style="border-radius: 50%;">
-        <label for="country_{{ country.id }}"><img src="{{ country.flag }}" alt="flag" style="width: 20px;"> {{ country.name }}</label><br>
+        <input type="checkbox" id="country_{{ country.id }}" name="country" value="{{ country.id }}">
+        <label for="country_{{ country.id }}"><img id="flag" src="{{ country.flag }}" alt="flag"> {{ country.name }}</label><br>
         {% endfor %}
     </ul>
 

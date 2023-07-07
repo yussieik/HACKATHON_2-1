@@ -1,3 +1,13 @@
+#logo {
+    width: 30px; 
+    height: 30px; 
+    border-radius: 50%;
+}
+
+#flag {
+    width: 20px;
+}
+
 #countries {
     width: 500px; height: 500px; overflow: scroll; margin-left: 50px; border: 1px solid lightblue;
 }
