@@ -6,13 +6,15 @@
 <div class="d-flex justify-content-start">
     <h3>Countries List</h3>
 
-    <ol>
+  
+
+    <ul>
         {% for country in countries %}
-        <li>{{ country }} 
-            <img src="{{country.flag}}" alt="flag" style="width: 20px;">
-        </li>
+        <input type="checkbox" id="country_{{ country.id }}" name="country" value="{{ country.id }}" style="border-radius: 50%;">
+        <label for="country_{{ country.id }}">{{ country.name }} <img src="{{ country.flag }}" alt="flag" style="width: 20px;"></label><br>
         {% endfor %}
-    </ol>
+    </ul>
+
 </div>
 
 {% endblock content %}
