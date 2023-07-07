@@ -12,15 +12,11 @@
     <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
 </head>
 <body>
-    <div>
-        Current user: <b>{{user}}</b>
-    </div>
+    <!-- <div>Current user: <b>{{user}}</b></div> -->
     {% include  'core/navbar.html'%}
 
-    
-    {% block content %}
+        {% block content %}
 
-    {% endblock %}
-    
+        {% endblock %}
 </body>
 </html>

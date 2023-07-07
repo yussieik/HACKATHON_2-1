@@ -1,7 +1,59 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 #logo {
     width: 30px; 
     height: 30px; 
     border-radius: 50%;
+}
+
+main {
+    height: 100vh;
+    background-image: url('https://cdn.wallpapersafari.com/51/88/TnqYVR.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+}
+
+h3 {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.form {
+    margin: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    justify-content: center;
+    text-align: center;
+    background-color: lightskyblue;
+    opacity: 0.8;
+    box-shadow: 2px 2px 6px 6px midnightblue;
+}
+
+button {
+    border-radius: 5px;
+    background-color: royalblue;
+    color: white;
+    margin-top: 10px;
+    padding: 5px 0;
+}
+
+input {
+    margin: 5px;
+}
+
+#sign {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 #flag {
