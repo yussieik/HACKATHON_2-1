@@ -8,16 +8,18 @@
     {% load bootstrap5 %}
     {% bootstrap_css %}
     {% bootstrap_javascript %}
-    <link rel="stylesheet" href="/travelmap_top/static/css/style.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
 </head>
 <body>
     <div>
         Current user: <b>{{user}}</b>
     </div>
-    {% include  'navbar.html'%}
+    {% include  'core/navbar.html'%}
 
     
     {% block content %}
+
     {% endblock %}
     
 </body>

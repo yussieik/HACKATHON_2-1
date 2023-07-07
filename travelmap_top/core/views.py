@@ -33,7 +33,7 @@ def countries(self, request):
         return JsonResponse(serialized_data, safe=False)
         
 class HomePageView(ListView):
-    template_name = 'main/index.html'
+    template_name = 'core/home.html'
     model = Country
     context_object_name = 'countries'
 
