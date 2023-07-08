@@ -4,7 +4,9 @@ from django.views.generic.edit import CreateView
 from .forms import SignupForm
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView
+from django.views.generic import ListView
 from django.urls import reverse_lazy
+from core.models import Country
 
 # Create your views here.
 class SignupView(CreateView):
@@ -20,10 +22,31 @@ class CustomLoginView(LoginView):
         user = self.request.user
         if user.is_superuser:
             return reverse_lazy('home')
-        return reverse_lazy('profile.html', kwargs={'pk': user.pk})
+        return reverse_lazy('profile', kwargs={'pk': user.pk})
 
-class ProfileView(View):
-    def get(self, request, pk):
-        user = User.objects.get(id=pk)
-        # trips = Trip.objects.filter(user=user)
-        return render(request, 'profile.html', {'user' : user})
+class ProfileView(ListView):
+    template_name = 'profile.html'
+    model = Country
+    context_object_name = 'countries'
+
+    # def get(self, request, pk):
+    #     user = User.objects.get(id=pk)
+    #     visited_countries = user.user_profile.visited_countries.all()
+    #     available_countries = Country.objects.exclude(visits__user=user)
+    #     context = {
+    #         'user': user,
+    #         'visited': visited_countries,
+    #         'available': available_countries,
+    #     }
+    #     return render(request, 'profile.html', context)
+    
+    def get_queryset(self):
+        return Country.objects.order_by('name')
+    
+# class HomePageView(ListView):
+#     template_name = 'core/home.html'
+#     model = Country
+#     context_object_name = 'countries'
+
+#     def get_queryset(self):
+#         return Country.objects.order_by('name')
