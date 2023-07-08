@@ -30,6 +30,7 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 // 	ext: 'png'
 // }).addTo(map);
 
+
 var countriesData = L.geoJSON(countriesJSON,{
     onEachFeature: function(feature,layer){
         layer.bindPopup('<b>This is a </b>' + feature.properties.ADMIN)
