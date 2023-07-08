@@ -93,5 +93,31 @@ input {
 }
 
 #countries {
-    width: 500px; height: 500px; overflow: scroll; margin-left: 50px; border: 1px solid lightblue;
+    width: 415px; 
+    height: 630px; 
+    overflow: scroll; 
+    border: 1px solid lightblue;
+
+}
+
+#container {
+    margin: 25px;
+    display: flex;
+}
+
+#countries-box {
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid black; */
+}
+
+#button-add {
+    margin-top: 10px;
+    height: 40px;
+}
+
+#map {
+    height: 700px;
+    width: 100%;
+    margin-left: 15px;
 }
