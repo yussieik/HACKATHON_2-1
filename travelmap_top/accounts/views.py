@@ -28,7 +28,10 @@ class ProfileView(ListView):
     template_name = 'profile.html'
     model = Country
     context_object_name = 'countries'
-
+    
+    def get_queryset(self):
+        return Country.objects.order_by('name')
+    
     # def get(self, request, pk):
     #     user = User.objects.get(id=pk)
     #     visited_countries = user.user_profile.visited_countries.all()
@@ -39,14 +42,3 @@ class ProfileView(ListView):
     #         'available': available_countries,
     #     }
     #     return render(request, 'profile.html', context)
-    
-    def get_queryset(self):
-        return Country.objects.order_by('name')
-    
-# class HomePageView(ListView):
-#     template_name = 'core/home.html'
-#     model = Country
-#     context_object_name = 'countries'
-
-#     def get_queryset(self):
-#         return Country.objects.order_by('name')
