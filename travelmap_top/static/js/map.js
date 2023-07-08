@@ -36,9 +36,9 @@ var countriesData = L.geoJSON(countriesJSON,{
         layer.bindPopup('<b>This is a </b>' + feature.properties.ADMIN)
     },
     style:{
-        fillColor: 'blue',
+        fillColor: '#0B6EFD',
         fillOpacity:0.9,
-        color: 'black'
+        color: 'lightblue'
     }
 }).addTo(map);
 
