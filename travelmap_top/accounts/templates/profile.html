@@ -1,17 +1,34 @@
 {% extends 'core/base.html' %}
+{% load static %}
+
 {% block title %} Travel Map {% endblock %}
+
+{% block head_block %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+{% endblock %}
+
 {% block content %}
 <h1>Track Your Travel History</h1>
-<h3>Countries List</h3><br>
-<div class="d-flex justify-content-start">
+<h3>Countries List</h3>
+<div id="container">
+    <!-- <div id="countries-box" class="d-flex justify-content-start"> -->
+    <div id="countries-box">
+        <ul id="countries">
+            {% for country in countries %}
+            <input type="checkbox" id="country_{{ country.id }}" name="country" value="{{ country.id }}">
+            <label for="country_{{ country.id }}"><img id="flag" src="{{ country.flag }}" alt="flag"> {{ country.name }}</label><br>
+            {% endfor %}
+        </ul>
+        <button id="button-add">Add countries to your Trip</button>
+    </div>
     
-    <ul id="countries">
-        {% for country in countries %}
-        <input type="checkbox" id="country_{{ country.id }}" name="country" value="{{ country.id }}">
-        <label for="country_{{ country.id }}"><img id="flag" src="{{ country.flag }}" alt="flag"> {{ country.name }}</label><br>
-        {% endfor %}
-    </ul>
-
+    <div id="map"></div>
 </div>
 
-{% endblock content %}
+{% endblock %}
+
+{% block js_block %}
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="{% static 'js/map.js' %}"></script>
+<script src="{% static 'js/countries.js' %}"></script>
+{% endblock %}
