@@ -22,3 +22,8 @@ class CustomLoginView(LoginView):
             return reverse_lazy('home')
         return reverse_lazy('profile.html', kwargs={'pk': user.pk})
 
+class ProfileView(View):
+    def get(self, request, pk):
+        user = User.objects.get(id=pk)
+        # trips = Trip.objects.filter(user=user)
+        return render(request, 'profile.html', {'user' : user})

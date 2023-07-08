@@ -1,17 +1,15 @@
 {% extends 'core/base.html' %}
 {% block title %} Travel Map {% endblock %}
 {% block content %}
-<h1>Track Your Travel History</h1>
-<h3>Countries List</h3><br>
-<div class="d-flex justify-content-start">
+<main>
+    <div id="header"><h1>Track Your Travel History Here</h1>
     
-    <ul id="countries">
-        {% for country in countries %}
-        <input type="checkbox" id="country_{{ country.id }}" name="country" value="{{ country.id }}">
-        <label for="country_{{ country.id }}"><img id="flag" src="{{ country.flag }}" alt="flag"> {{ country.name }}</label><br>
-        {% endfor %}
-    </ul>
-
-</div>
+    <h2>Do you know how many countries have you visited so far?</h2>
+    <h2><a href="{% url 'signup' %}">Sign Up</a> to find out!</h2></div>
+  
+    <footer>
+        <p>&copy; 2023 Made by Full Snack Devs for DI-Hackathon</p>
+    </footer>
+</main>
 
 {% endblock content %}

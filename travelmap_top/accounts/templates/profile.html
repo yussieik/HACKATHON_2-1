@@ -1,16 +1,17 @@
-{% extends 'base.html' %}
+{% extends 'core/base.html' %}
 {% block title %} Travel Map {% endblock %}
 {% block content %}
-
 <h1>Track Your Travel History</h1>
-<div>
+<h3>Countries List</h3><br>
+<div class="d-flex justify-content-start">
     
-    <ol>
+    <ul id="countries">
         {% for country in countries %}
-        <li>{{ country }}</li>
+        <input type="checkbox" id="country_{{ country.id }}" name="country" value="{{ country.id }}">
+        <label for="country_{{ country.id }}"><img id="flag" src="{{ country.flag }}" alt="flag"> {{ country.name }}</label><br>
         {% endfor %}
-    </ol>
-    
+    </ul>
+
 </div>
 
 {% endblock content %}

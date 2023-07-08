@@ -1,3 +1,10 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Agdasima&display=swap'); */
+
+@import url('https://fonts.googleapis.com/css2?family=Agdasima:wght@700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+
+
 * {
     margin: 0;
     padding: 0;
@@ -12,17 +19,37 @@
 
 main {
     height: 100vh;
-    background-image: url('https://cdn.wallpapersafari.com/51/88/TnqYVR.jpg');
+    background-image: url('https://www.wallpaperup.com/uploads/wallpapers/2012/07/24/7276/52ed66a83ef8259a0ece4a180d02dd0d-700.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* #header {
+    margin-top: 30px;
+} */
+
+h1, h2 {
+    color: aliceblue;
+    font-size: 3em;
+    font-family: 'Agdasima';
+    text-align: center;
+    margin-top: 10%;
 }
 
 h3 {
     margin-top: 10px;
     text-align: center;
+}
+
+footer {
+    font-family: 'Oswald';
+    color: aliceblue;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 .form {

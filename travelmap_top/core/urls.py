@@ -9,7 +9,4 @@ urlpatterns = [
     path('api/countries/', CountryAPIList.as_view()),
     path('api/countries/<int:pk>', CountryAPIUpdate.as_view()),
     path('api/countries/delete/<int:pk>', CountryAPIDestroy.as_view()),
-    # add_country, name='add-country'),
-    # path('api/countries/', countries, name='countries'),
-    # path('bulk-insert/', bulk_insert, name='bulk-insert'),
 ]
