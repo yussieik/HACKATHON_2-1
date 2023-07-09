@@ -30,6 +30,9 @@ class ProfileView(ListView):
     model = Country
     context_object_name = 'countries'
 
+    def get_queryset(self):
+        return Country.objects.order_by('name')
+
     # def get_context_data(self, **kwargs):
     #     context = super().get_context_data(**kwargs)
     #     username = self.kwargs.get('username')
@@ -38,8 +41,6 @@ class ProfileView(ListView):
     #     context['selected_countries'] = selected_countries
     #     return context
     
-    def get_queryset(self):
-        return Country.objects.order_by('name')
     
     # def get(self, request, pk):
     #     user = User.objects.get(id=pk)

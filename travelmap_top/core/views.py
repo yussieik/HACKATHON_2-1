@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from rest_framework import generics
 from rest_framework.views import APIView
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
 from .models import Country
@@ -40,16 +41,13 @@ class HomePageView(View):
 
 
 # added with Lise
-class addCountries(APIView):
-    # def get(self, request, format=None):
-    #     drinks = Drink.objects.all()
-    #     serializer = DrinkSerializer(drinks, many=True)
-    #     return Response(serializer.data)
+class UserCountriesList(APIView):
+    permission_classes = [IsAuthenticated]
 
     def post(self, request, format=None):
-        print("request  data", request.data)
-        print("request user", request.user)
         serializer = AddCountrySerializer(data=request.data)
+        print(request.data)
+        print(serializer.errors)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data,status=status.HTTP_201_CREATED)
