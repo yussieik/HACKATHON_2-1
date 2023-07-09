@@ -16,6 +16,7 @@
         <ul id="countries">
             {% for country in countries %}
             <input type="checkbox" id="country_{{ country.id }}" name="country" value="{{ country.name }}">
+            <!-- {% if country in selected_countries %}checked{% endif %}> -->
             <label for="country_{{ country.id }}"><img id="flag" src="{{ country.flag }}" alt="flag"> {{ country.name }}</label><br>
             {% endfor %}
         </ul>

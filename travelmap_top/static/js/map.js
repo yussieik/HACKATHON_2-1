@@ -41,9 +41,27 @@ function createMap(geojsonData) {
       }
     });
     highlightSelectedCountries(countriesLayer, selectedCountries);
+    addData(selectedCountries);
   });
 
 
+//   added with Lise
+async function addData(selectedCountries) {
+    console.log("in adddata");
+    const countriesSelected = {
+        selectedCountries: selectedCountries
+    }
+    const response = await fetch("http://127.0.0.1:8000/api/add-countries/", {
+        method : "POST",
+        headers : {
+            "Content-Type": 'application/json',
+        },
+        body : JSON.stringify(countriesSelected)
+    })   
+    const result = await response.json();
+    console.log("result", result);
+}
+// end here
 
     function highlightSelectedCountries(countriesLayer, selectedCountries) {
         countriesLayer.eachLayer(function(layer) {

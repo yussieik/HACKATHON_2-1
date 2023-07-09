@@ -7,6 +7,7 @@ from django.contrib.auth.views import LoginView
 from django.views.generic import ListView
 from django.urls import reverse_lazy
 from core.models import Country
+from django.shortcuts import get_object_or_404
 
 # Create your views here.
 class SignupView(CreateView):
@@ -28,6 +29,14 @@ class ProfileView(ListView):
     template_name = 'profile.html'
     model = Country
     context_object_name = 'countries'
+
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     username = self.kwargs.get('username')
+    #     user = get_object_or_404(User, username=username)
+    #     selected_countries = user.user_profile.visited_countries.all()
+    #     context['selected_countries'] = selected_countries
+    #     return context
     
     def get_queryset(self):
         return Country.objects.order_by('name')
