@@ -44,23 +44,44 @@ function createMap(geojsonData) {
     addData(selectedCountries);
   });
 
+  //coocie function
+  function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+
+
 
 //   added with Lise
-async function addData(selectedCountries) {
-    console.log("in adddata");
-    const countriesSelected = {
-        selectedCountries: selectedCountries
+    async function addData(selectedCountries) {
+        console.log("in adddata");
+        const csrftoken = getCookie('csrftoken'); // HERE: get the token 
+        const countriesSelected = {
+            selectedCountries: selectedCountries
+        }
+        const response = await fetch("http://127.0.0.1:8000/api/add-countries/", {
+            method : "POST",
+            headers : {
+                "X-CSRFToken": csrftoken , // HERE: add it to the request header
+                "Content-Type": 'application/json',
+            },
+            body : JSON.stringify(countriesSelected)
+        })   
+        const result = await response.json();
+        console.log("result", result);
     }
-    const response = await fetch("http://127.0.0.1:8000/api/add-countries/", {
-        method : "POST",
-        headers : {
-            "Content-Type": 'application/json',
-        },
-        body : JSON.stringify(countriesSelected)
-    })   
-    const result = await response.json();
-    console.log("result", result);
-}
 // end here
 
     function highlightSelectedCountries(countriesLayer, selectedCountries) {

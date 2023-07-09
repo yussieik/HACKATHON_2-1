@@ -6,7 +6,7 @@
 
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
       <a class="navbar-brand" href="{% url 'home' %}">
-        Travel <img id="logo" src="travelmap_top/core/templates/core/logo.png" class="d-inline-block align-top" alt=""> Map
+        Travel <img id="logo" src="travelmap_top/core/templates/core/logo.png" class="d-inline-block align-top" alt="logo"> Map
       </a>
       <ul class="navbar-nav mt-2 mt-lg-0">
         {% if user.is_authenticated %}
@@ -17,10 +17,10 @@
           <a class="nav-link" href="{% url 'profile' pk=user.pk %}">Profile</a>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0 d-flex">
+      <!-- <form class="form-inline my-2 my-lg-0 d-flex">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-light my-2 my-sm-0 ml-2" type="submit">Search</button>
-      </form>
+      </form> -->
       <ul class="navbar-nav mt-2 mt-lg-0">
         <li class="nav-item">
           <a class="nav-link" href="{% url 'logout' %}">Logout</a>
