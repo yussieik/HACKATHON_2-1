@@ -15,7 +15,7 @@
     <div id="countries-box">
         <ul id="countries">
             {% for country in countries %}
-            <input type="checkbox" id="country_{{ country.id }}" name="country" value="{{ country.id }}">
+            <input type="checkbox" id="country_{{ country.id }}" name="country" value="{{ country.name }}">
             <label for="country_{{ country.id }}"><img id="flag" src="{{ country.flag }}" alt="flag"> {{ country.name }}</label><br>
             {% endfor %}
         </ul>

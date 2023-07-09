@@ -57,20 +57,22 @@ function createMap(geojsonData) {
     }
   }).addTo(map);
 
-//   var checkboxes = document.querySelectorAll('input[name="country"]');
-//   var addButton = document.getElementById('button-add');
+  var checkboxes = document.querySelectorAll('input[name="country"]');
+  var addButton = document.getElementById('button-add');
 
-//   addButton.addEventListener('click', function() {
-//     var selectedCountries = [];
-//     checkboxes.forEach(function(checkbox) {
-//       if (checkbox.checked) {
-//         var countryName = checkbox.parentNode.querySelector('label').innerText;
-//         selectedCountries.push(checkbox.value);
-//         console.log("list of selected countries", selectedCountries);
-//       }
-//     });
-//     highlightCountries(selectedCountries);
-//   });
+  var selectedCountries = [];
+
+  addButton.addEventListener('click', function() {
+    // var selectedCountries = [];
+    checkboxes.forEach(function(checkbox) {
+      if (checkbox.checked) {
+        var countryName = checkbox.parentNode.querySelector('label').innerText;
+        selectedCountries.push(checkbox.value);
+        console.log("list of selected countries", selectedCountries);
+      }
+    });
+    highlightSelectedCountries(countriesLayer, selectedCountries);
+  });
 
 
 //   function highlightCountries(countries) {
@@ -90,17 +92,30 @@ function createMap(geojsonData) {
 // }
 
 
-    var targetCountries = ['Argentina', 'Brazil', 'Russia']; // Specify the countries you want to highlight
+    // var targetCountries = ['Argentina', 'Brazil', 'Russia']; // Specify the countries you want to highlight
 
-    countriesLayer.eachLayer(function(layer) {
-    var countryName = layer.feature.properties.ADMIN;
-    if (targetCountries.includes(countryName)) {
-        layer.setStyle({ fillOpacity: 0.8, fillColor: '#0B6EFD', color: 'lightblue'});
-        layer.openPopup();
-    } else {
-        layer.setStyle({ fillOpacity: 0.4, fillColor: 'white'});
-        layer.closePopup();
+    // countriesLayer.eachLayer(function(layer) {
+    // var countryName = layer.feature.properties.ADMIN;
+    // if (selectedCountries.includes(countryName)) {
+    //     layer.setStyle({ fillOpacity: 0.8, fillColor: '#0B6EFD', color: 'lightblue'});
+    //     layer.openPopup();
+    // } else {
+    //     layer.setStyle({ fillOpacity: 0.4, fillColor: 'white'});
+    //     layer.closePopup();
+    // }
+    // });
+
+    function highlightSelectedCountries(countriesLayer, selectedCountries) {
+        countriesLayer.eachLayer(function(layer) {
+          var countryName = layer.feature.properties.ADMIN;
+          if (selectedCountries.includes(countryName)) {
+            layer.setStyle({ fillOpacity: 0.8, fillColor: '#0B6EFD', color: 'lightblue' });
+            layer.openPopup();
+          } else {
+            layer.setStyle({ fillOpacity: 0.4, fillColor: 'white' });
+            layer.closePopup();
+          }
+        });
     }
-    });
 }
 
