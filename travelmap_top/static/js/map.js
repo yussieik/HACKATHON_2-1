@@ -74,7 +74,8 @@ function createMap(geojsonData) {
         const response = await fetch("http://127.0.0.1:8000/api/add-countries/", {
             method : "POST",
             headers : {
-                "X-CSRFToken": csrftoken , // HERE: add it to the request header
+                'X-CSRFToken': '{{ csrf_token }}',
+                // "X-CSRFToken": csrftoken , // HERE: add it to the request header
                 "Content-Type": 'application/json',
             },
             body : JSON.stringify(countriesSelected)

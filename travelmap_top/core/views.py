@@ -9,6 +9,7 @@ from .serializers import CountrySerializer, AddCountrySerializer
 from django.http import JsonResponse
 from .utils import bulk_insert_countries
 from django.views import View
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 class CountryAPIList(generics.ListCreateAPIView):
@@ -41,11 +42,13 @@ class HomePageView(View):
 
 
 # added with Lise
+# @csrf_exempt
 class UserCountriesList(APIView):
     permission_classes = [IsAuthenticated]
-
+    print('test')
     def post(self, request, format=None):
         serializer = AddCountrySerializer(data=request.data)
+        print('test2')
         print(request.data)
         print(serializer.errors)
         if serializer.is_valid():
