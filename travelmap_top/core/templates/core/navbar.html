@@ -1,3 +1,4 @@
+{% load static %}
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary d-flex justify-content-between">
   
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="true" aria-label="Toggle navigation">
@@ -6,7 +7,7 @@
 
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
       <a style="margin-left: 25px;" class="navbar-brand" href="{% url 'home' %}">
-        Travel  Map
+        Travel <img id="logo" src="{% static 'img/logo.png' %}" class="d-inline-block align-top" alt="logo"> Map
       </a>
       <ul class="navbar-nav mt-2 mt-lg-0">
         {% if user.is_authenticated %}
