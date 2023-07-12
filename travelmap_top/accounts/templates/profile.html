@@ -8,10 +8,12 @@
 {% endblock %}
 
 {% block content %}
+<div id="user-box">
+    <h3>Hello <b>{{user}}</b>, you have visited <b><span id="has-visited"></span></b> countries of the world!</h3>
+</div>
 
-<h3>Countries List</h3>
 <div id="container">
-    <!-- <div id="countries-box" class="d-flex justify-content-start"> -->
+
     <div id="countries-box">
         <ul id="countries">
             {% for country in countries %}

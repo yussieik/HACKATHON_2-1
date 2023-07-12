@@ -5,8 +5,8 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-      <a class="navbar-brand" href="{% url 'home' %}">
-        Travel <img id="logo" src="travelmap_top/core/templates/core/logo.png" class="d-inline-block align-top" alt="logo"> Map
+      <a style="margin-left: 25px;" class="navbar-brand" href="{% url 'home' %}">
+        Travel  Map
       </a>
       <ul class="navbar-nav mt-2 mt-lg-0">
         {% if user.is_authenticated %}

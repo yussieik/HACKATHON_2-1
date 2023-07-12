@@ -30,6 +30,7 @@ function createMap(geojsonData) {
 
   var checkboxes = document.querySelectorAll('input[name="country"]');
   var addButton = document.getElementById('button-add');
+  var hasVisitedDiv = document.getElementById('has-visited');
 
   var selectedCountries = [];
 
@@ -42,6 +43,10 @@ function createMap(geojsonData) {
     });
     highlightSelectedCountries(countriesLayer, selectedCountries);
     addData(selectedCountries);
+    // Join the items into a string without quotes
+    // const countriesString = selectedCountries.join(", ");
+    const result = Math.round((selectedCountries.length / 248) * 100);
+    hasVisitedDiv.innerHTML = result + '%';
   });
 
 //   coocie function
@@ -61,29 +66,8 @@ function createMap(geojsonData) {
     return cookieValue;
 }
 
-// function getCookie(name) {
-//     let cookieValue = null;
-//     if (document.cookie && document.cookie !== '') {
-//         const cookies = document.cookie.split(';');
-//         for (let i = 0; i < cookies.length; i++) {
-//             const cookie = cookies[i].trim();
-//             if (cookie.substring(0, name.length + 1) === (name + '=')) {
-//                 cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-//                 break;
-//             }
-//         }
-//     }
-//     return cookieValue;
-// }
-// const csrftoken = getCookie('csrftoken');
-
-// const headers = {
-//   "X-CSRFToken": csrftoken,
-//   "Content-Type": "application/json"
-// };
 
 
-//   added with Lise
     async function addData(selectedCountries) {
         console.log("in adddata");
         const csrftoken = getCookie('csrftoken'); // HERE: get the token 
@@ -104,7 +88,6 @@ function createMap(geojsonData) {
         const result = await response.json();
         console.log("result", result);
     }
-// end here
 
     function highlightSelectedCountries(countriesLayer, selectedCountries) {
         countriesLayer.eachLayer(function(layer) {
