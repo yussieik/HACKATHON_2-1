@@ -45,13 +45,28 @@ function createMap(geojsonData) {
   });
 
   //coocie function
-  function getCookie(name) {
+//   function getCookie(name) {
+//     let cookieValue = null;
+//     if (document.cookie && document.cookie !== '') {
+//         const cookies = document.cookie.split(';');
+//         for (let i = 0; i < cookies.length; i++) {
+//             const cookie = cookies[i].trim();
+//             // Does this cookie string begin with the name we want?
+//             if (cookie.substring(0, name.length + 1) === (name + '=')) {
+//                 cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+//                 break;
+//             }
+//         }
+//     }
+//     return cookieValue;
+// }
+
+function getCookie(name) {
     let cookieValue = null;
     if (document.cookie && document.cookie !== '') {
         const cookies = document.cookie.split(';');
         for (let i = 0; i < cookies.length; i++) {
             const cookie = cookies[i].trim();
-            // Does this cookie string begin with the name we want?
             if (cookie.substring(0, name.length + 1) === (name + '=')) {
                 cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
                 break;
@@ -60,25 +75,31 @@ function createMap(geojsonData) {
     }
     return cookieValue;
 }
+const csrftoken = getCookie('csrftoken');
 
-
+const headers = {
+  "X-CSRFToken": csrftoken,
+  "Content-Type": "application/json"
+};
 
 
 //   added with Lise
     async function addData(selectedCountries) {
         console.log("in adddata");
-        const csrftoken = getCookie('csrftoken'); // HERE: get the token 
+        // const csrftoken = getCookie('csrftoken'); // HERE: get the token 
         const countriesSelected = {
             selectedCountries: selectedCountries
         }
         const response = await fetch("http://127.0.0.1:8000/api/add-countries/", {
             method : "POST",
-            headers : {
-                'X-CSRFToken': '{{ csrf_token }}',
-                // "X-CSRFToken": csrftoken , // HERE: add it to the request header
-                "Content-Type": 'application/json',
-            },
-            body : JSON.stringify(countriesSelected)
+            headers,
+            // headers : {
+            //     'X-CSRFToken': '{{ csrf_token }}',
+            //     // "X-CSRFToken": csrftoken , // HERE: add it to the request header
+            //     "Content-Type": 'application/json',
+            // },
+            body : JSON.stringify(countriesSelected),
+            credentials: 'include'
         })   
         const result = await response.json();
         console.log("result", result);
