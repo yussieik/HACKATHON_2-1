@@ -43,7 +43,6 @@ function createMap(geojsonData) {
     });
     highlightSelectedCountries(countriesLayer, selectedCountries);
     addData(selectedCountries);
-    // Join the items into a string without quotes
     // const countriesString = selectedCountries.join(", ");
     const result = Math.round((selectedCountries.length / 248) * 100);
     hasVisitedDiv.innerHTML = result + '%';
