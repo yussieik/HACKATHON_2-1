@@ -1,0 +1,22 @@
+Hey Ilya and Ivan,
+
+Just wrapped up the review of your Django project. Here's some feedback:
+
+- You've shown an excellent understanding of project structure and file organization. The way you've separated authorization from the core apps aids in readability and logical navigation of the codebase.
+
+- The code readability and formatting is top-notch. It seems you've got a good grip on PEP 8 standards which makes your code easy to follow.
+
+- Good work on making use of Django and Django REST Framework features. I particularly liked the usage of signals for creating profiles and the integration of JavaScript. This shows that you're venturing beyond the basics, which is commendable.
+
+- Your use of `bulk_create` in database modelling is a smart move. It increases efficiency and is a good practice to adopt when dealing with large amounts of data.
+
+- The area of error handling and validation is something you need to focus on a bit more. Always try to think of ways to prevent disaster in models/views, through validations and appropriate use of try-except clauses.
+
+- I noticed that there's a lack of sufficient comments and documentation in your code. Documentation is essential for clarity and future reference. Make sure you add comments and document your classes and functions properly.
+
+- Your approach towards keeping things simple is appreciated and it clearly shows in your work. However, there are areas where this simplicity needs to be complemented with depth, like in error handling and documentation.
+
+Keep up the good work!
+
+Best,
+[Your Name]
